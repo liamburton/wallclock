@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Wall Clock</title>
+	<style>
+	html { 
+		background: url(bg.jpg) no-repeat center center fixed; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	#displayBox {
+		background: black;
+        color: white;
+        border-radius: .5em;
+        padding: .5em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+		font-weight: bold;
+		font-size: 10em;
+		margin: 0;
+		opacity: 0.9;
+	}
+	</style>
+	<script>
+	function startTime() {
+		var today = new Date();
+		var h = today.getHours();
+		var m = today.getMinutes();
+		var s = today.getSeconds();
+		m = checkTime(m);
+		s = checkTime(s);
+		document.getElementById('displayBox').innerHTML =
+		h + ":" + m + ":" + s;
+		var t = setTimeout(startTime, 500);
+	}
+	function checkTime(i) {
+		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		return i;
+	}
+	</script>
+</head>
+<body onload="startTime()">
+	
+	<div id="displayBox">
+		Getting time...
+	</div>
+</body>
+</html>
